@@ -3,11 +3,15 @@ import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import { useState, useEffect } from "react";
 
 export default function BasicSwitches() {
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
+
   const colorArray = [
     "white",
-    "darkred",
     "red",
     "orange",
     "yellow",
@@ -15,19 +19,30 @@ export default function BasicSwitches() {
     "green",
     "cyan",
     "blue",
+    "violet",
     "purple",
     "indigo",
-    "violet",
     "darkviolet",
+    "magenta",
   ];
 
   const switchArray = ["first", "second", "third", "fourth"];
+
+  useEffect(() => {
+    let today = new Date();
+    const timer = setInterval(() => {
+      setSeconds(today.getSeconds() + 1);
+      setMinutes(today.getMinutes());
+      setHours(today.getHours());
+    }, 1000);
+    return () => clearInterval(timer);
+  });
 
   return (
     <div>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Paper sx={{ backgroundColor: "white" }}>
+          <Paper sx={{ backgroundColor: "gray" }} square={true}>
             <Grid
               container
               justifyContent="center"
@@ -39,10 +54,11 @@ export default function BasicSwitches() {
                 return (
                   <Grid key={index} item>
                     <Paper
-                      variant="outlined"
                       elevation={index}
                       sx={{ height: 100, width: 100, backgroundColor: element }}
-                    />
+                    >
+                      {hours}{":"}{minutes}{":"}{seconds - 1}
+                    </Paper>
                   </Grid>
                 );
               })}
