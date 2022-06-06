@@ -2,7 +2,7 @@ import * as React from "react";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Paper";
+import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import { useState, useEffect } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -57,7 +57,7 @@ export default function BasicSwitches() {
                   <Grid key={index} item>
                     <Card
                       elevation={index}
-                      sx={{ height: 100, width: 100, backgroundColor: element }}
+                      sx={{ height: 150, width: 100, backgroundColor: element }}
                     >
                       <Avatar sx={{ bgcolor: "red" }}>R</Avatar>
                       <Avatar sx={{ bgcolor: "yellow" }}>Y</Avatar>
