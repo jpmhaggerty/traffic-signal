@@ -2,8 +2,10 @@ import * as React from "react";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import Card from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
 import { useState, useEffect } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function BasicSwitches() {
   const [seconds, setSeconds] = useState(0);
@@ -23,7 +25,7 @@ export default function BasicSwitches() {
     "purple",
     "indigo",
     "darkviolet",
-    "magenta",
+    "magenta"
   ];
 
   const switchArray = ["first", "second", "third", "fourth"];
@@ -42,7 +44,7 @@ export default function BasicSwitches() {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Paper sx={{ backgroundColor: "gray" }} square={true}>
+          <Card sx={{ backgroundColor: "gray" }} square={true}>
             <Grid
               container
               justifyContent="center"
@@ -53,17 +55,26 @@ export default function BasicSwitches() {
               {colorArray.map((element, index) => {
                 return (
                   <Grid key={index} item>
-                    <Paper
+                    <Card
                       elevation={index}
                       sx={{ height: 100, width: 100, backgroundColor: element }}
                     >
-                      {hours}{":"}{minutes}{":"}{seconds - 1}
-                    </Paper>
+                      <Avatar sx={{ bgcolor: "red" }}>R</Avatar>
+                      <Avatar sx={{ bgcolor: "yellow" }}>Y</Avatar>
+                      <Avatar sx={{ bgcolor: "green" }}>
+                        <ArrowBackIcon />
+                      </Avatar>
+                      {hours}
+                      {":"}
+                      {minutes}
+                      {":"}
+                      {seconds - 1}
+                    </Card>
                   </Grid>
                 );
               })}
             </Grid>
-          </Paper>
+          </Card>
         </Grid>
 
         <Grid item xs={12}>
