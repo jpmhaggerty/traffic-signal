@@ -56,6 +56,8 @@ export default function BasicSwitches() {
                 return (
                   <Grid key={index} item>
                     <Card
+                      alignContent="center"
+                      justifyContent="center"
                       elevation={index}
                       sx={{ height: 150, width: 100, backgroundColor: element }}
                     >
