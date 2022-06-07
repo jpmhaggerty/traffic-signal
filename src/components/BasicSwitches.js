@@ -7,6 +7,10 @@ import Avatar from "@mui/material/Avatar";
 import { useState, useEffect } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
+import { styled } from "@mui/material/styles";
+import Badge from "@mui/material/Badge";
+import Stack from "@mui/material/Stack";
+
 export default function BasicSwitches() {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -25,10 +29,45 @@ export default function BasicSwitches() {
     "purple",
     "indigo",
     "darkviolet",
-    "magenta"
+    "magenta",
   ];
 
   const switchArray = ["first", "second", "third", "fourth"];
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      backgroundColor: "#44b700",
+      color: "#44b700",
+      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+      "&::after": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        borderRadius: "50%",
+        animation: "ripple 1.2s infinite ease-in-out",
+        border: "1px solid currentColor",
+        content: '""',
+      },
+    },
+    "@keyframes ripple": {
+      "0%": {
+        transform: "scale(.8)",
+        opacity: 1,
+      },
+      "100%": {
+        transform: "scale(2.4)",
+        opacity: 0,
+      },
+    },
+  }));
+
+  const SmallAvatar = styled(Avatar)(({ theme }) => ({
+    width: 22,
+    height: 22,
+    border: `2px solid ${theme.palette.background.paper}`,
+  }));
 
   useEffect(() => {
     let today = new Date();
@@ -61,11 +100,49 @@ export default function BasicSwitches() {
                       elevation={index}
                       sx={{ height: 150, width: 100, backgroundColor: element }}
                     >
-                      <Avatar sx={{ bgcolor: "red" }}>R</Avatar>
-                      <Avatar sx={{ bgcolor: "yellow" }}>Y</Avatar>
-                      <Avatar sx={{ bgcolor: "green" }}>
-                        <ArrowBackIcon />
-                      </Avatar>
+                      <Stack direction="row" spacing={2}>
+                        <StyledBadge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          variant="dot"
+                        >
+                          <Avatar sx={{ bgcolor: "black" }}>
+                            <ArrowBackIcon sx={{ color: "red" }} />
+                          </Avatar>
+                        </StyledBadge>
+                      </Stack>
+                      <Stack direction="row" spacing={2}>
+                        <StyledBadge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          variant="dot"
+                        >
+                          <Avatar sx={{ bgcolor: "black" }}>
+                            <ArrowBackIcon sx={{ color: "yellow" }} />
+                          </Avatar>
+                        </StyledBadge>
+                      </Stack>
+                      <Stack direction="row" spacing={2}>
+                        <StyledBadge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          variant="dot"
+                        >
+                          <Avatar sx={{ bgcolor: "black" }}>
+                            <ArrowBackIcon sx={{ color: "green" }} />
+                          </Avatar>
+                        </StyledBadge>
+                      </Stack>
+
                       {hours}
                       {":"}
                       {minutes}

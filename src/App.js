@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import * as React from "react";
 import BasicSwitches from "./components/BasicSwitches";
 
 function App() {
