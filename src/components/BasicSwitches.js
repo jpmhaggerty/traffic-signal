@@ -1,38 +1,157 @@
 import * as React from "react";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import Avatar from "@mui/material/Avatar";
+import { styled } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
-import { styled } from "@mui/material/styles";
+import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Card from "@mui/material/Card";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
+import Switch from "@mui/material/Switch";
+
+import SignalHead from "./SignalHead.js";
 
 export default function BasicSwitches() {
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [hours, setHours] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const [type, setType] = useState("solid");
+  const [signal, setSignal] = useState([
+    //Phase 0
+    [],
+    //Phase 1
+    [
+      [
+        ["red", "leftArrow", "flash"],
+        ["yellow", "leftArrow", "flash"],
+        ["green", "leftArrow", "flash"],
+      ],
+    ],
+    //Phase 2
+    [
+      [
+        ["red", "solid", "flash"],
+        ["yellow", "solid", "flash"],
+        ["green", "solid", "flash"],
+      ],
+      [
+        ["red", "rightArrow", "flash"],
+        ["yellow", "rightArrow", "flash"],
+        ["green", "rightArrow", "flash"],
+      ],
+    ],
+    //Phase 3
+    [
+      [
+        ["red", "leftArrow", "flash"],
+        ["yellow", "leftArrow", "flash"],
+        ["green", "leftArrow", "flash"],
+      ],
+    ],
+    //Phase 4
+    [
+      [
+        ["red", "solid", "flash"],
+        ["yellow", "solid", "flash"],
+        ["green", "solid", "flash"],
+      ],
+      [
+        ["red", "rightArrow", "flash"],
+        ["yellow", "rightArrow", "flash"],
+        ["green", "rightArrow", "flash"],
+      ],
+    ],
+    //Phase 5
+    [
+      [
+        ["red", "leftArrow", "flash"],
+        ["yellow", "leftArrow", "flash"],
+        ["green", "leftArrow", "flash"],
+      ],
+    ],
+    //Phase 6
+    [
+      [
+        ["red", "solid", "flash"],
+        ["yellow", "solid", "flash"],
+        ["green", "solid", "flash"],
+      ],
+      [
+        ["red", "rightArrow", "flash"],
+        ["yellow", "rightArrow", "flash"],
+        ["green", "rightArrow", "flash"],
+      ],
+    ],
+    //Phase 7
+    [
+      [
+        ["red", "leftArrow", "flash"],
+        ["yellow", "leftArrow", "flash"],
+        ["green", "leftArrow", "flash"],
+      ],
+    ],
+    //Phase 8
+    [
+      [
+        ["red", "solid", "flash"],
+        ["yellow", "solid", "flash"],
+        ["green", "solid", "flash"],
+      ],
+      [
+        ["red", "rightArrow", "flash"],
+        ["yellow", "rightArrow", "flash"],
+        ["green", "rightArrow", "flash"],
+      ],
+    ],
+  ]);
+
+  let fullCycle = 15;
+  let timeStep = 1000;
+
+  let upperLamp = "red";
+  let middleLamp = "yellow";
+  let lowerLamp = "green";
+
+  const switchArray = ["leftArrow", "solid", "rightArrow"];
 
   const colorArray = [
-    "white",
-    "red",
-    "orange",
-    "yellow",
-    "lightgreen",
-    "green",
-    "cyan",
-    "blue",
-    "violet",
-    "purple",
-    "indigo",
-    "darkviolet",
-    "magenta",
+    [
+      "white",
+      "red",
+      "orange",
+      "yellow",
+      "lightgreen",
+      "green",
+      "cyan",
+      "blue",
+      "violet",
+      "purple",
+      "indigo",
+      "darkviolet",
+      "magenta",
+    ],
+    [
+      "#222222",
+      "#333333",
+      "#444444",
+      "#555555",
+      "#666666",
+      "#777777",
+      "#888888",
+      "#999999",
+      "#AAAAAA",
+      "#BBBBBB",
+      "#CCCCCC",
+      "#DDDDDD",
+    ],
   ];
 
-  const switchArray = ["first", "second", "third", "fourth"];
+  let signalSpec = [
+    [upperLamp, type, "flash"],
+    [middleLamp, type, "flash"],
+    [lowerLamp, type, "flash"],
+  ];
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -63,109 +182,38 @@ export default function BasicSwitches() {
     },
   }));
 
-  const SmallAvatar = styled(Avatar)(({ theme }) => ({
-    width: 22,
-    height: 22,
-    border: `2px solid ${theme.palette.background.paper}`,
-  }));
-
   useEffect(() => {
-    let today = new Date();
-    const timer = setInterval(() => {
-      setSeconds(today.getSeconds() + 1);
-      setMinutes(today.getMinutes());
-      setHours(today.getHours());
-    }, 1000);
-    return () => clearInterval(timer);
+    const timerID = setInterval(() => {
+      //run lamp toggles
+      if (timer === fullCycle) {
+        setTimer(0);
+      } else {
+        setTimer(timer + 1);
+      }
+    }, timeStep);
+    return () => clearInterval(timerID);
   });
 
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item sx={{ overflow: "scroll" }}>
           <Card sx={{ backgroundColor: "gray" }} square={true}>
-            <Grid
-              container
-              justifyContent="center"
-              alignContent="center"
-              rowSpacing={2}
-              columnSpacing={2}
-            >
-              {colorArray.map((element, index) => {
+            <Grid container>
+              {colorArray[1].map((element, index) => {
                 return (
-                  <Grid key={index} item>
+                  <Grid key={index} item sx={{ display: "inline" }}>
                     <Card
-                      alignContent="center"
-                      justifyContent="center"
-                      elevation={index}
                       sx={{ height: 150, width: 100, backgroundColor: element }}
                     >
-                      <Stack direction="row" spacing={2}>
-                        <StyledBadge
-                          overlap="circular"
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                          }}
-                          variant="dot"
-                        >
-                          <Avatar sx={{ bgcolor: "black" }}>
-                            <ArrowBackIcon sx={{ color: "red" }} />
-                          </Avatar>
-                        </StyledBadge>
-                      </Stack>
-                      <Stack direction="row" spacing={2}>
-                        <StyledBadge
-                          overlap="circular"
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                          }}
-                          variant="dot"
-                        >
-                          <Avatar sx={{ bgcolor: "black" }}>
-                            <ArrowBackIcon sx={{ color: "yellow" }} />
-                          </Avatar>
-                        </StyledBadge>
-                      </Stack>
-                      <Stack direction="row" spacing={2}>
-                        <StyledBadge
-                          overlap="circular"
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                          }}
-                          variant="dot"
-                        >
-                          <Avatar sx={{ bgcolor: "black" }}>
-                            <ArrowBackIcon sx={{ color: "green" }} />
-                          </Avatar>
-                        </StyledBadge>
-                      </Stack>
-
-                      {hours}
-                      {":"}
-                      {minutes}
-                      {":"}
-                      {seconds - 1}
+                      <SignalHead signal={signal} />
+                      {timer}
                     </Card>
                   </Grid>
                 );
               })}
             </Grid>
           </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          {switchArray.map((element, index) => {
-            return (
-              <FormControlLabel
-                key={index}
-                control={<Switch defaultChecked />}
-                label={element}
-              ></FormControlLabel>
-            );
-          })}
         </Grid>
       </Grid>
     </div>
