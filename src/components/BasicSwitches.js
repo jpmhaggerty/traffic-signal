@@ -197,22 +197,9 @@ export default function BasicSwitches() {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item sx={{ overflow: "scroll" }}>
+        <Grid item>
           <Card sx={{ backgroundColor: "gray" }} square={true}>
-            <Grid container>
-              {colorArray[1].map((element, index) => {
-                return (
-                  <Grid key={index} item sx={{ display: "inline" }}>
-                    <Card
-                      sx={{ height: 150, width: 100, backgroundColor: element }}
-                    >
-                      <SignalHead signal={signal} />
-                      {timer}
-                    </Card>
-                  </Grid>
-                );
-              })}
-            </Grid>
+            <SignalHead signal={signal} timer={timer} />
           </Card>
         </Grid>
       </Grid>
