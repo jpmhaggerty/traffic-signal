@@ -16,7 +16,7 @@ import SignalHead from "./SignalHead.js";
 
 export default function BasicSwitches() {
   const [timer, setTimer] = useState(0);
-  const [type, setType] = useState("solid");
+  const [type, setType] = useState("close");
   const [signal, setSignal] = useState([
     //Phase 0
     [],
@@ -105,6 +105,9 @@ export default function BasicSwitches() {
       ],
     ],
   ]);
+
+  let color = "yellow";
+  let frequency = 0;
 
   let fullCycle = 15;
   let timeStep = 1000;
@@ -198,8 +201,10 @@ export default function BasicSwitches() {
     <div>
       <Grid container spacing={2}>
         <Grid item>
-          <Card sx={{ backgroundColor: "gray" }} square={true}>
-            <SignalHead signal={signal} timer={timer} />
+          <Card sx={{ backgroundColor: "black" }} square={true}>
+            <SignalHead type={type} color={color} frequency={frequency} />
+            <SignalHead type={type} color={color} frequency={frequency} />
+            <SignalHead type={type} color={color} frequency={frequency} />
           </Card>
         </Grid>
       </Grid>

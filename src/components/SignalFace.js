@@ -7,7 +7,6 @@ import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
 
 export default function SignalFace({ color, type, mode }) {
-  console.log("Here: ", color, type, mode);
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       backgroundColor: "#44b700",
@@ -39,24 +38,26 @@ export default function SignalFace({ color, type, mode }) {
 
 
   const typeChooser = () => {
+    let typeJSX;
     switch (type) {
       case "leftArrow":
-        return (
+        typeJSX =  (
           <Avatar sx={{ bgcolor: "black" }}>
             <ArrowBackIcon sx={{ color: color }} />
           </Avatar>
         );
         break;
         case "rightArrow":
-          return (
+          typeJSX = (
             <Avatar sx={{ bgcolor: "black" }}>
               <ArrowForwardIcon sx={{ color: color }} />
             </Avatar>
           );
           break;
       default:
-        return <Avatar sx={{ bgcolor: color }}> </Avatar>;
+        typeJSX = ( <Avatar sx={{ bgcolor: color }}> </Avatar>);
     }
+    return typeJSX;
   };
 
   return (
