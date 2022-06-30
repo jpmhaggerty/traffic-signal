@@ -1,15 +1,9 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import Card from "@mui/material/Card";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-import Switch from "@mui/material/Switch";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -19,7 +13,35 @@ import CircleIcon from "@mui/icons-material/Circle";
 import CloseIcon from "@mui/icons-material/Close";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 
-export default function SignalHead({ type, color, frequency }) {
+export default function SignalHead({ type, color, frequency, timer }) {
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      backgroundColor: "black",
+      color: "yellow",
+      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+      "&::after": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        borderRadius: "50%",
+        animation: "ripple 1.2s infinite ease-in-out",
+        border: "1px solid currentColor",
+      },
+    },
+    "@keyframes ripple": {
+      "0%": {
+        transform: "scale(.8)",
+        opacity: 1,
+      },
+      "100%": {
+        transform: "scale(2.4)",
+        opacity: 0,
+      },
+    },
+  }));
+
   const typeChooser = () => {
     switch (type) {
       case "close":
@@ -46,8 +68,18 @@ export default function SignalHead({ type, color, frequency }) {
   };
 
   return (
-    <Card sx={{ background: "black" }}>
-      <Avatar sx={{ bgcolor: "black" }}>{typeChooser()}</Avatar>
+    <Card sx={{ bgcolor: "black" }}>
+      {/* <Stack direction="row" spacing={2}>
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          // variant="dot"
+          badgeContent={timer}
+          color="secondary"
+        > */}
+          <Avatar sx={{ bgcolor: "black" }}>{typeChooser()}</Avatar>
+        {/* </StyledBadge>
+      </Stack> */}
     </Card>
   );
 }
