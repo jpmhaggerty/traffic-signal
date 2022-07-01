@@ -6,99 +6,101 @@ import SignalAssembly from "./components/SignalAssembly.js";
 export default function App() {
   const [timer, setTimer] = useState(0);
   const [signal, setSignal] = useState([
+    //Color, Type, Frequency, Active
     //Phase 0
     [
       [
         ["red", "close", 0],
-        ["yellow", "close", 0],
-        ["red", "walk", 0],
-        ["white", "walk", 0],
-        ["red", "upArrow", 0],
-        ["green", "upArrow", 0],
+        1,
+        ["yellow", "close", 0, 1],
+        ["red", "walk", 0, 1],
+        ["white", "walk", 0, 1],
+        ["red", "upArrow", 0, 1],
+        ["green", "upArrow", 0, 1],
       ],
     ],
     //Phase 1
     [
       [
-        ["red", "leftArrow", 0],
-        ["yellow", "leftArrow", 0],
-        ["green", "leftArrow", 0],
+        ["red", "leftArrow", 0, 1],
+        ["yellow", "leftArrow", 0, 0],
+        ["green", "leftArrow", 0, 0],
       ],
     ],
     //Phase 2
     [
       [
-        ["red", "solid", 0],
-        ["yellow", "solid", 0],
-        ["green", "solid", 0],
+        ["red", "solid", 0, 1],
+        ["yellow", "solid", 0, 0],
+        ["green", "solid", 0, 0],
       ],
       [
-        ["red", "rightArrow", 0],
-        ["yellow", "rightArrow", 0],
-        ["green", "rightArrow", 0],
+        ["red", "rightArrow", 0, 1],
+        ["yellow", "rightArrow", 0, 0],
+        ["green", "rightArrow", 0, 0],
       ],
     ],
     //Phase 3
     [
       [
-        ["red", "leftArrow", 0],
-        ["yellow", "leftArrow", 0],
-        ["green", "leftArrow", 0],
+        ["red", "leftArrow", 0, 1],
+        ["yellow", "leftArrow", 0, 0],
+        ["green", "leftArrow", 0, 0],
       ],
     ],
     //Phase 4
     [
       [
-        ["red", "solid", 0],
-        ["yellow", "solid", 0],
-        ["green", "solid", 0],
+        ["red", "solid", 0, 1],
+        ["yellow", "solid", 0, 0],
+        ["green", "solid", 0, 0],
       ],
       [
-        ["red", "rightArrow", 0],
-        ["yellow", "rightArrow", 0],
-        ["green", "rightArrow", 0],
+        ["red", "rightArrow", 0, 1],
+        ["yellow", "rightArrow", 0, 0],
+        ["green", "rightArrow", 0, 0],
       ],
     ],
     //Phase 5
     [
       [
-        ["red", "leftArrow", 0],
-        ["yellow", "leftArrow", 0],
-        ["green", "leftArrow", 0],
+        ["red", "leftArrow", 0, 1],
+        ["yellow", "leftArrow", 0, 0],
+        ["green", "leftArrow", 0, 0],
       ],
     ],
     //Phase 6
     [
       [
-        ["red", "solid", 0],
-        ["yellow", "solid", 0],
-        ["green", "solid", 0],
+        ["red", "solid", 0, 1],
+        ["yellow", "solid", 0, 0],
+        ["green", "solid", 0, 0],
       ],
       [
-        ["red", "rightArrow", 0],
-        ["yellow", "rightArrow", 0],
-        ["green", "rightArrow", 0],
+        ["red", "rightArrow", 0, 1],
+        ["yellow", "rightArrow", 0, 0],
+        ["green", "rightArrow", 0, 0],
       ],
     ],
     //Phase 7
     [
       [
-        ["red", "leftArrow", 0],
-        ["yellow", "leftArrow", 0],
-        ["green", "leftArrow", 0],
+        ["red", "leftArrow", 0, 1],
+        ["yellow", "leftArrow", 0, 0],
+        ["green", "leftArrow", 0, 0],
       ],
     ],
     //Phase 8
     [
       [
-        ["red", "solid", 0],
-        ["yellow", "solid", 0],
-        ["green", "solid", 0],
+        ["red", "solid", 0, 1],
+        ["yellow", "solid", 0, 0],
+        ["green", "solid", 0, 0],
       ],
       [
-        ["red", "rightArrow", 0],
-        ["yellow", "rightArrow", 0],
-        ["green", "rightArrow", 0],
+        ["red", "rightArrow", 0, 1],
+        ["yellow", "rightArrow", 0, 0],
+        ["green", "rightArrow", 0, 0],
       ],
     ],
   ]);
@@ -156,316 +158,100 @@ export default function App() {
 
     switch (timer) {
       case phase1GreenStart:
-        tempSignal[1][0][0][0] = "black";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "green";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "black";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "green";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[1][0][0][3] = 0;
+        tempSignal[1][0][2][3] = 1;
         break;
       case phase1YellowStart:
-        tempSignal[1][0][0][0] = "black";
-        tempSignal[1][0][1][0] = "yellow";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "black";
-        tempSignal[5][0][1][0] = "yellow";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[1][0][1][3] = 1;
+        tempSignal[1][0][2][3] = 0;
         break;
       case phase1RedStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[1][0][0][3] = 1;
+        tempSignal[1][0][1][3] = 0;
         break;
       case phase2GreenStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "black";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "green";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "black";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "green";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[2][0][0][3] = 0;
+        tempSignal[2][0][2][3] = 1;
         break;
       case phase2YellowStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "black";
-        tempSignal[2][0][1][0] = "yellow";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "black";
-        tempSignal[6][0][1][0] = "yellow";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[2][0][1][3] = 1;
+        tempSignal[2][0][2][3] = 0;
         break;
       case phase2RedStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[2][0][0][3] = 1;
+        tempSignal[2][0][1][3] = 0;
         break;
       case phase3GreenStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "black";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "green";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "black";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "green";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[3][0][0][3] = 0;
+        tempSignal[3][0][2][3] = 1;
         break;
       case phase3YellowStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "black";
-        tempSignal[3][0][1][0] = "yellow";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "black";
-        tempSignal[7][0][1][0] = "yellow";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[3][0][1][3] = 1;
+        tempSignal[3][0][2][3] = 0;
         break;
       case phase3RedStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[3][0][0][3] = 1;
+        tempSignal[3][0][1][3] = 0;
         break;
       case phase4GreenStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "black";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "green";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "black";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "green";
+        tempSignal[4][0][0][3] = 0;
+        tempSignal[4][0][2][3] = 1;
         break;
       case phase4YellowStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "black";
-        tempSignal[4][0][1][0] = "yellow";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "black";
-        tempSignal[8][0][1][0] = "yellow";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[4][0][1][3] = 1;
+        tempSignal[4][0][2][3] = 0;
         break;
       case phase4RedStart:
-        tempSignal[1][0][0][0] = "red";
-        tempSignal[1][0][1][0] = "black";
-        tempSignal[1][0][2][0] = "black";
-        tempSignal[2][0][0][0] = "red";
-        tempSignal[2][0][1][0] = "black";
-        tempSignal[2][0][2][0] = "black";
-        tempSignal[3][0][0][0] = "red";
-        tempSignal[3][0][1][0] = "black";
-        tempSignal[3][0][2][0] = "black";
-        tempSignal[4][0][0][0] = "red";
-        tempSignal[4][0][1][0] = "black";
-        tempSignal[4][0][2][0] = "black";
-        tempSignal[5][0][0][0] = "red";
-        tempSignal[5][0][1][0] = "black";
-        tempSignal[5][0][2][0] = "black";
-        tempSignal[6][0][0][0] = "red";
-        tempSignal[6][0][1][0] = "black";
-        tempSignal[6][0][2][0] = "black";
-        tempSignal[7][0][0][0] = "red";
-        tempSignal[7][0][1][0] = "black";
-        tempSignal[7][0][2][0] = "black";
-        tempSignal[8][0][0][0] = "red";
-        tempSignal[8][0][1][0] = "black";
-        tempSignal[8][0][2][0] = "black";
+        tempSignal[4][0][0][3] = 1;
+        tempSignal[4][0][1][3] = 0;
+        break;
+      case phase5GreenStart:
+        tempSignal[5][0][0][3] = 0;
+        tempSignal[5][0][2][3] = 1;
+        break;
+      case phase5YellowStart:
+        tempSignal[5][0][1][3] = 1;
+        tempSignal[5][0][2][3] = 0;
+        break;
+      case phase5RedStart:
+        tempSignal[5][0][0][3] = 1;
+        tempSignal[5][0][1][3] = 0;
+        break;
+      case phase6GreenStart:
+        tempSignal[6][0][0][3] = 0;
+        tempSignal[6][0][2][3] = 1;
+        break;
+      case phase6YellowStart:
+        tempSignal[6][0][1][3] = 1;
+        tempSignal[6][0][2][3] = 0;
+        break;
+      case phase6RedStart:
+        tempSignal[6][0][0][3] = 1;
+        tempSignal[6][0][1][3] = 0;
+        break;
+      case phase7GreenStart:
+        tempSignal[7][0][0][3] = 0;
+        tempSignal[7][0][2][3] = 1;
+        break;
+      case phase7YellowStart:
+        tempSignal[7][0][1][3] = 1;
+        tempSignal[7][0][2][3] = 0;
+        break;
+      case phase7RedStart:
+        tempSignal[7][0][0][3] = 1;
+        tempSignal[7][0][1][3] = 0;
+        break;
+      case phase8GreenStart:
+        tempSignal[8][0][0][3] = 0;
+        tempSignal[8][0][2][3] = 1;
+        break;
+      case phase8YellowStart:
+        tempSignal[8][0][1][3] = 1;
+        tempSignal[8][0][2][3] = 0;
+        break;
+      case phase8RedStart:
+        tempSignal[8][0][0][3] = 1;
+        tempSignal[8][0][1][3] = 0;
         break;
     }
     setSignal(tempSignal);
