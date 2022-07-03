@@ -103,6 +103,44 @@ export default function App() {
         ["green", "rightArrow", 0, 0],
       ],
     ],
+    //Phase 9
+    {
+      phase: 9,
+      lane: {
+        lamp: [
+          {
+            vpos: 0,
+            hpos: 1,
+            color: "red",
+            type: "rightArrow",
+            freq: 0,
+            start: 0,
+            duration: 4,
+            active: true,
+          },
+          {
+            vpos: 0,
+            hpos: 1,
+            color: "yellow",
+            type: "rightArrow",
+            freq: 0,
+            start: 0,
+            duration: 3,
+            active: false,
+          },
+          {
+            vpos: 0,
+            hpos: 1,
+            color: "green",
+            type: "rightArrow",
+            freq: 0,
+            start: 0,
+            duration: 6,
+            active: false,
+          },
+        ],
+      },
+    },
   ]);
 
   let fullCycle = 40;
