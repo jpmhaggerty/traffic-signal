@@ -13,7 +13,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import CloseIcon from "@mui/icons-material/Close";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 
-export default function SignalHead({ type, color, frequency, timer }) {
+export default function SignalLamp({ lamp, timer }) {
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       backgroundColor: "black",
@@ -43,43 +43,100 @@ export default function SignalHead({ type, color, frequency, timer }) {
   }));
 
   const typeChooser = () => {
-    switch (type) {
+    switch (lamp.type) {
       case "close":
-        return <CloseIcon sx={{ height: 50, width: 50, color: color }} />;
+        return (
+          <CloseIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
+        );
       case "downArrow":
         return (
-          <ArrowDownwardIcon sx={{ height: 50, width: 50, color: color }} />
+          <ArrowDownwardIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
         );
       case "leftArrow":
-        return <ArrowBackIcon sx={{ height: 50, width: 50, color: color }} />;
+        return (
+          <ArrowBackIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
+        );
       case "rightArrow":
         return (
-          <ArrowForwardIcon sx={{ height: 50, width: 50, color: color }} />
+          <ArrowForwardIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
         );
       case "upArrow":
-        return <ArrowUpwardIcon sx={{ height: 50, width: 50, color: color }} />;
+        return (
+          <ArrowUpwardIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
+        );
       case "walk":
         return (
-          <DirectionsWalkIcon sx={{ height: 40, width: 40, color: color }} />
+          <DirectionsWalkIcon
+            sx={{
+              height: 40,
+              width: 40,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
         );
       default:
-        return <CircleIcon sx={{ height: 50, width: 50, color: color }} />;
+        return (
+          <CircleIcon
+            sx={{
+              height: 50,
+              width: 50,
+              color: lamp.color,
+              visibility: lamp.visibility,
+            }}
+          />
+        );
     }
   };
 
   return (
     <Card sx={{ bgcolor: "black" }}>
-      {/* <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2}>
         <StyledBadge
           overlap="circular"
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           // variant="dot"
           badgeContent={timer}
           color="secondary"
-        > */}
+        >
           <Avatar sx={{ bgcolor: "black" }}>{typeChooser()}</Avatar>
-        {/* </StyledBadge>
-      </Stack> */}
+        </StyledBadge>
+      </Stack>
     </Card>
   );
 }
