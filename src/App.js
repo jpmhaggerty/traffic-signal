@@ -619,7 +619,6 @@ export default function App() {
 
   useEffect(() => {
     const timerID = setInterval(() => {
-      //run lamp toggles
       runSignal();
       if (timer === fullCycle) {
         setTimer(0);
