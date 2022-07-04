@@ -130,6 +130,7 @@ export default function SignalLamp({ lamp, timer }) {
         <StyledBadge
           overlap="circular"
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          showZero="true"
           // variant="dot"
           badgeContent={timer}
           color="secondary"
