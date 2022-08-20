@@ -1,33 +1,33 @@
 .redBack {
-  background-color: red !important;
+  background-color: red;
 }
 
 .yellowBack {
-  background-color: yellow !important;
+  background-color: yellow;
 }
 
 .greenBack {
-  background-color: green !important;
+  background-color: green;
 }
 
 .blackBack {
-  background-color: black !important;
+  background-color: black;
 }
 
 .redFront {
-  color: red !important;
+  color: red;
 }
 
 .yellowFront {
-  color: yellow !important;
+  color: yellow;
 }
 
 .greenFront {
-  color: green !important;
+  color: green;
 }
 
 .blackFront {
-  color: black !important;
+  color: black;
 }
 
 .levelStyle {

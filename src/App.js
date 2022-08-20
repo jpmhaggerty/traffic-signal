@@ -2,6 +2,7 @@ import * as React from "react";
 import "./App.css";
 import { useState, useEffect } from "react";
 import SignalPhase from "./components/SignalPhase.js";
+import Intersection from "./components/Intersection.js";
 
 export default function App() {
   const timeStep = 1000;
@@ -665,6 +666,7 @@ export default function App() {
 
   return (
     <div>
+      <Intersection />
       {signal.phase.map((element, index) => {
         return <SignalPhase key={index} phase={element} timer={timer} />;
       })}

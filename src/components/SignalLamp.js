@@ -113,6 +113,7 @@ export default function SignalLamp({ lamp, timer }) {
       default:
         return (
           <CircleIcon
+            className={"strobe"}
             sx={{
               height: 50,
               width: 50,
@@ -125,17 +126,15 @@ export default function SignalLamp({ lamp, timer }) {
   };
 
   return (
-    <Card sx={{ bgcolor: "black" }}>
+    <Card className="blackBack">
       <Stack direction="row" spacing={2}>
         <StyledBadge
           overlap="circular"
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           showZero="true"
-          // variant="dot"
           badgeContent={timer}
-          color="secondary"
         >
-          <Avatar sx={{ bgcolor: "black" }}>{typeChooser()}</Avatar>
+          <Avatar className="blackBack">{typeChooser()}</Avatar>
         </StyledBadge>
       </Stack>
     </Card>
