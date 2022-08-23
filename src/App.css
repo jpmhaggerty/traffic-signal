@@ -52,9 +52,8 @@
 }
 
 .strobe {
+  animation: "strobe 1.5s infinite ease-in-out";
   animation-name: strobe;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
 }
 
 @keyframes strobe {
